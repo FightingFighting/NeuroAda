@@ -1,5 +1,5 @@
 # NeuroAda
-This is the official repository for our EMNLP 2025 paper: NeuroAda: Activating Each Neuron’s Potential for Parameter-Efficient Fine-Tuning
+This is the official repository for our EMNLP 2025 paper: [NeuroAda: Activating Each Neuron’s Potential for Parameter-Efficient Fine-Tuning](https://arxiv.org/abs/2510.18940)
 
 # Result
 We provide the wandb link to show our results reported in our paper.
