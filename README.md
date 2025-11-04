@@ -33,7 +33,7 @@ This is the official repository for our EMNLP 2025 paper: **[NeuroAda: Activatin
 ## Dataset Preparation
 
 ### Option 1: Use Provided Datasets
-The repository includes datasets in the `dataset/` folder. These are identical to those used in **LLM-Adapters** and **LoReFT**. Doenload them and unzip them in the folder.
+The repository includes datasets in the `dataset/` folder. These are identical to those used in **LLM-Adapters** and **LoReFT**. Download them and unzip them in the folder.
 
 ### Option 2: Download Original Datasets
 You can download the original datasets from:
@@ -72,23 +72,23 @@ python train_our.py \
 ```
 
 ### Using Pre-configured Scripts
-We provide pre-configured training scripts for differen tasks and trainable parameters budget:
+We provide pre-configured training scripts for different tasks and the trainable parameters budget:
 
 #### Commonsense Reasoning
 ```bash
-# LLaMA-7B on commonsense tasks with top-20 paramerters
+# LLaMA-7B on commonsense tasks with top-20 parameters
 bash scripts/percell/perCell_mag_add/LLaMA-7B/top20/commonsense.sh
 
-# LLaMA-7B on commonsense tasks with top-1 paramerters
+# LLaMA-7B on commonsense tasks with top-1 parameters
 bash scripts/percell/perCell_mag_add/LLaMA-7B/top1/commonsense.sh
 ```
 
 #### Arithmetic Reasoning
 ```bash
-# LLaMA-7B on commonsense tasks with top-20 paramerters
+# LLaMA-7B on commonsense tasks with top-20 parameters
 bash scripts/percell/perCell_mag_add/LLaMA-7B/top20/math.sh
 
-# LLaMA-7B on commonsense tasks with top-1 paramerters
+# LLaMA-7B on commonsense tasks with top-1 parameters
 bash scripts/percell/perCell_mag_add/LLaMA-7B/top1/math.sh
 ```
 
@@ -100,7 +100,7 @@ bash scripts/percell/perCell_mag_add/LLaMA-7B/top1/math.sh
 | `-model` | Base model path | `yahma/llama-7b-hf`, `yahma/llama-13b-hf`, `meta-llama/Llama-2-7b-hf`,`meta-llama/Meta-Llama-3-8B` |
 | `--peft_type` | PEFT method | `perCell_mag_add` |
 | `--target_modules` | Target modules for selecting parameters | See below |
-| `--times_num` | Top-K input cionnection for each neuron | `1`, `5`, `10`, `20`, etc.  |
+| `--times_num` | Top-K input connection for each neuron | `1`, `5`, `10`, `20`, etc.  |
 | `-e` | Number of epochs | - |
 
 
