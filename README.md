@@ -4,6 +4,11 @@ This is the official repository for our EMNLP 2025 paper:  [NeuroAda: Activating
 # Environment
 coming soon
 
+# Dataset
+You can download the datasets following [**LLM-Adapters**](https://github.com/AGI-Edgerunners/LLM-Adapters/tree/main) or [**Loreft**](https://github.com/stanfordnlp/pyreft/tree/main/examples/loreft).
+
+You can also just use the files in the dataset folder in the repo. They are the same as **LLM-Adapters** and [**Loreft**].
+
 # Train
 coming soon
 
