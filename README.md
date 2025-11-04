@@ -9,7 +9,6 @@ This is the official repository for our EMNLP 2025 paper: **[NeuroAda: Activatin
 - [Installation](#installation)
 - [Dataset Preparation](#dataset-preparation)
 - [Training](#training)
-- [Evaluation](#evaluation)
 - [Results](#results)
 - [Citation](#citation)
 - [Acknowledgements](#acknowledgements)
