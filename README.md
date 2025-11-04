@@ -2,7 +2,9 @@
 This is the official repository for our EMNLP 2025 paper:  [NeuroAda: Activating Each Neuron’s Potential for Parameter-Efficient Fine-Tuning](https://arxiv.org/abs/2510.18940)
 
 # Environment
-coming soon
+git clone https://github.com/FightingFighting/NeuroAda.git
+cd NeuroAda
+conda env create -f environment.yml
 
 # Dataset
 You can download the datasets following [**LLM-Adapters**](https://github.com/AGI-Edgerunners/LLM-Adapters/tree/main) or [**Loreft**](https://github.com/stanfordnlp/pyreft/tree/main/examples/loreft).
@@ -10,7 +12,8 @@ You can download the datasets following [**LLM-Adapters**](https://github.com/AG
 You can also just use the files in the dataset folder in this repo. They are the same as **LLM-Adapters** and **Loreft**. Download them and unzip them in the dataset folder.
 
 # Train
-coming soon
+cd NeuroAda
+bash sc
 
 # Result
 We provide the **Wandb** link to show our results reported in our paper.
