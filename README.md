@@ -46,4 +46,26 @@ We provide the **Wandb** link to show our results reported in our paper.
 | **[LLaMA3 (8B)](https://wandb.ai/z-zhang/NeuroAda/runs/n7xpnu0a?nw=nwuserzzhang)** | **0.017%** | 97.2 | 63.7 | 91.9 | 26.4 | 92.9 | 75.0 | 88.7 |  **76.5** |
 
 ---
+# Acknowledgement 
+Our code is based on [**LLM-Adapters**](https://github.com/AGI-Edgerunners/LLM-Adapters/tree/main) or [**Loreft**](https://github.com/stanfordnlp/pyreft/tree/main/examples/loreft). Thank for their contribution.
 
+# Citation
+@inproceedings{zhang-etal-2025-neuroada,
+    title = "{N}euro{A}da: Activating Each Neuron{'}s Potential for Parameter-Efficient Fine-Tuning",
+    author = "Zhang, Zhi  and
+      Shen, Yixian  and
+      Cao, Congfeng  and
+      Shutova, Ekaterina",
+    editor = "Christodoulopoulos, Christos  and
+      Chakraborty, Tanmoy  and
+      Rose, Carolyn  and
+      Peng, Violet",
+    booktitle = "Proceedings of the 2025 Conference on Empirical Methods in Natural Language Processing",
+    month = nov,
+    year = "2025",
+    address = "Suzhou, China",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/2025.emnlp-main.555/",
+    pages = "10960--10977",
+    ISBN = "979-8-89176-332-6"
+}
