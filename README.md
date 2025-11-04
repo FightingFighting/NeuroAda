@@ -96,7 +96,7 @@ bash scripts/percell/perCell_mag_add/LLaMA-7B/top1/math.sh
 ### Training Parameters
 
 | Parameter | Description | Options |
-|-----------|-------------|--------|----------|
+|-----------|-------------|----------|
 | `-task` | Task type | `commonsense`, `math` |
 | `-model` | Base model path | `yahma/llama-7b-hf`, `yahma/llama-13b-hf`, `meta-llama/Llama-2-7b-hf`,`meta-llama/Meta-Llama-3-8B` |
 | `--peft_type` | PEFT method | `perCell_mag_add` |
