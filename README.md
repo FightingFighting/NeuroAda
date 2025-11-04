@@ -13,7 +13,7 @@ You can also just use the files in the dataset folder in this repo. They are the
 coming soon
 
 # Result
-We provide the wandb link to show our results reported in our paper.
+We provide the **Wandb** link to show our results reported in our paper.
 ### 🧠 Commonsense Reasoning Results
 
 | 🏗️ Base Model | ⚙️ Params (%) | 🧩 BoolQ | 💡 PIQA | 🤔 SIQA | 📖 HellaS. | 🧍 WinoG. | 🧮 ARC-e | 🧠 ARC-c | 📚 OBQA | 🌟 **Avg.** |
