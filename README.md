@@ -1,22 +1,121 @@
-# NeuroAda: Activating Each Neuron’s Potential for Parameter-Efficient Fine-Tuning 🚀
-This is the official repository for our EMNLP 2025 paper:  [NeuroAda: Activating Each Neuron’s Potential for Parameter-Efficient Fine-Tuning](https://arxiv.org/abs/2510.18940)
+# NeuroAda: Activating Each Neuron's Potential for Parameter-Efficient Fine-Tuning 🚀
 
-# Environment
-git clone https://github.com/FightingFighting/NeuroAda.git
-cd NeuroAda
-conda env create -f environment.yml
+[![Paper](https://img.shields.io/badge/Paper-EMNLP%202025-blue)](https://arxiv.org/abs/2510.18940)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-# Dataset
-You can download the datasets following [**LLM-Adapters**](https://github.com/AGI-Edgerunners/LLM-Adapters/tree/main) or [**Loreft**](https://github.com/stanfordnlp/pyreft/tree/main/examples/loreft).
+This is the official repository for our EMNLP 2025 paper: **[NeuroAda: Activating Each Neuron's Potential for Parameter-Efficient Fine-Tuning](https://arxiv.org/abs/2510.18940)**
 
-You can also just use the files in the dataset folder in this repo. They are the same as **LLM-Adapters** and **Loreft**. Download them and unzip them in the dataset folder.
+## Table of Contents
+- [Installation](#installation)
+- [Dataset Preparation](#dataset-preparation)
+- [Training](#training)
+- [Evaluation](#evaluation)
+- [Results](#results)
+- [Citation](#citation)
+- [Acknowledgements](#acknowledgements)
 
-# Train
-cd NeuroAda
-bash sc
+## Installation
 
-# Result
-We provide the **Wandb** link to show our results reported in our paper.
+
+### Step-by-Step Installation
+
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/FightingFighting/NeuroAda.git
+   cd NeuroAda
+   ```
+
+2. **Create and activate the conda environment:**
+   ```bash
+   conda env create -f environment.yml
+   conda activate peft
+   ```
+
+## Dataset Preparation
+
+### Option 1: Use Provided Datasets
+The repository includes datasets in the `dataset/` folder. These are identical to those used in **LLM-Adapters** and **LoReFT**. Doenload them and unzip them in the folder.
+
+### Option 2: Download Original Datasets
+You can download the original datasets from:
+- [**LLM-Adapters**](https://github.com/AGI-Edgerunners/LLM-Adapters/tree/main)
+- [**LoReFT**](https://github.com/stanfordnlp/pyreft/tree/main/examples/loreft)
+
+
+## Training
+
+### Quick Start
+For a basic training run:
+```bash
+```bash
+python train_our.py \
+   -task commonsense \
+   -data_dir dataset \
+   -model yahma/llama-7b-hf \
+   -seed 42 \
+   -e 3 \
+   -lr 7e-4 \
+   -batch_size 16 \
+   --micro_batch_size 16 \
+   -eval_batch_size 16 \
+   --test_split test \
+   --greedy_decoding \
+   --warmup_ratio 0.06 \
+   --weight_decay 0 \
+   --wandb_project=xxx \
+   --wandb_entity=xxx \
+   --wandb_watch all \
+   --times_num 20 \
+   --peft_type perCell_mag_add \
+   --max_length 512 \
+   --target_modules q_proj k_proj v_proj o_proj gate_proj up_proj down_proj
+
+```
+
+### Using Pre-configured Scripts
+We provide pre-configured training scripts for differen tasks and trainable parameters budget:
+
+#### Commonsense Reasoning
+```bash
+# LLaMA-7B on commonsense tasks with top-20 paramerters
+bash scripts/percell/perCell_mag_add/LLaMA-7B/top20/commonsense.sh
+
+# LLaMA-7B on commonsense tasks with top-1 paramerters
+bash scripts/percell/perCell_mag_add/LLaMA-7B/top1/commonsense.sh
+```
+
+#### Arithmetic Reasoning
+```bash
+# LLaMA-7B on commonsense tasks with top-20 paramerters
+bash scripts/percell/perCell_mag_add/LLaMA-7B/top20/math.sh
+
+# LLaMA-7B on commonsense tasks with top-1 paramerters
+bash scripts/percell/perCell_mag_add/LLaMA-7B/top1/math.sh
+```
+
+### Training Parameters
+
+| Parameter | Description | Options |
+|-----------|-------------|--------|----------|
+| `-task` | Task type | `commonsense`, `math` |
+| `-model` | Base model path | `yahma/llama-7b-hf`, `yahma/llama-13b-hf`, `meta-llama/Llama-2-7b-hf`,`meta-llama/Meta-Llama-3-8B` |
+| `--peft_type` | PEFT method | `perCell_mag_add` |
+| `--target_modules` | Target modules for selecting parameters | See below |
+| `--times_num` | Top-K input cionnection for each neuron | `1`, `5`, `10`, `20`, etc.  |
+| `-e` | Number of epochs | - |
+
+
+### Target Modules
+Common target modules for different models:
+- **LLaMA/LLaMA2/LLaMA3**: `q_proj`, `k_proj`, `v_proj`, `o_proj`, `gate_proj`, `up_proj`, `down_proj`
+- **Custom selection**: You can specify any subset of these modules
+
+
+
+## Results
+
+We provide **Weights & Biases** links to present our results reported in the paper. Below are the results on commonsense and arithmetic reasoning tasks.
+
 ### 🧠 Commonsense Reasoning Results
 
 | 🏗️ Base Model | ⚙️ Params (%) | 🧩 BoolQ | 💡 PIQA | 🤔 SIQA | 📖 HellaS. | 🧍 WinoG. | 🧮 ARC-e | 🧠 ARC-c | 📚 OBQA | 🌟 **Avg.** |
@@ -42,14 +141,14 @@ We provide the **Wandb** link to show our results reported in our paper.
 | **[LLaMA (13B)](https://wandb.ai/z-zhang/NeuroAda/runs/zq0h68om?nw=nwuserzzhang)** | **0.016%** | 94.5 | 43.0 | 88.6 | 25.6 | 90.4 | 56.7 | 83.6 |  **68.9** |
 | **[LLaMA2 (7B)](https://wandb.ai/z-zhang/NeuroAda/runs/hspdf8kn?nw=nwuserzzhang)** | **0.404%** | 97.8 | 39.8 | 91.9 | 20.5 | 96.3 | 54.2 | 89.5 |  **70.0** |
 | **[LLaMA2 (7B)](https://wandb.ai/z-zhang/NeuroAda/runs/psmmv5nr?nw=nwuserzzhang)** | **0.020%** | 90.8 | 36.1 | 88.4 | 22.8 | 87.6 | 52.1 | 82.4 |  **65.7** |
-| **[LLaMA3 (8B)](https://wandb.ai/z-zhang/NeuroAda/runs/8byjxd6z?nw=nwuserzzhang)** | **0.343%** | 99.7 | 47.8 | 92.7 | 27.6 | 95.7 | 60.4 | 88.7 |  **73.2** |
-| **[LLaMA3 (8B)](https://wandb.ai/z-zhang/NeuroAda/runs/n7xpnu0a?nw=nwuserzzhang)** | **0.017%** | 97.2 | 63.7 | 91.9 | 26.4 | 92.9 | 75.0 | 88.7 |  **76.5** |
+| **[Llama3 (8B)](https://wandb.ai/z-zhang/NeuroAda/runs/8byjxd6z?nw=nwuserzzhang)** | **0.343%** | 99.7 | 47.8 | 92.7 | 27.6 | 95.7 | 60.4 | 88.7 |  **73.2** |
+| **[Llama3 (8B)](https://wandb.ai/z-zhang/NeuroAda/runs/n7xpnu0a?nw=nwuserzzhang)** | **0.017%** | 97.2 | 63.7 | 91.9 | 26.4 | 92.9 | 75.0 | 88.7 |  **76.5** |
 
 ---
-# Acknowledgement 
-Our code is based on [**LLM-Adapters**](https://github.com/AGI-Edgerunners/LLM-Adapters/tree/main) or [**Loreft**](https://github.com/stanfordnlp/pyreft/tree/main/examples/loreft). Thank for their contribution.
 
-# Citation
+## Citation
+
+```bibtex
 @inproceedings{zhang-etal-2025-neuroada,
     title = "{N}euro{A}da: Activating Each Neuron{'}s Potential for Parameter-Efficient Fine-Tuning",
     author = "Zhang, Zhi  and
@@ -69,3 +168,12 @@ Our code is based on [**LLM-Adapters**](https://github.com/AGI-Edgerunners/LLM-A
     pages = "10960--10977",
     ISBN = "979-8-89176-332-6"
 }
+```
+
+## Acknowledgements
+
+Our code is based on [**LLM-Adapters**](https://github.com/AGI-Edgerunners/LLM-Adapters/tree/main) and [**LoReFT**](https://github.com/stanfordnlp/pyreft/tree/main/examples/loreft). We thank the authors for their valuable contributions to the open-source community.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
