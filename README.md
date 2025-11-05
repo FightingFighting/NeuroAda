@@ -46,7 +46,6 @@ You can download the original datasets from:
 ### Quick Start
 For a basic training run:
 ```bash
-```bash
 python train_our.py \
    -task commonsense \
    -data_dir dataset \
